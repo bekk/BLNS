@@ -15,9 +15,9 @@ export async function action({request}: ActionFunctionArgs) {
   );
 
   if (userExists) {
-    return json({data: {user: {username}}});
+    return json({user: {username}}, {status: 200});
   } else {
     // Returnerer input så vi kan rendre det i frontend (obs: det er en dårlig idé, men brukes her som eksempel)
-    throw new Response(username + password, {status: 403});
+    return json({user: {username}}, {status: 403});
   }
 }

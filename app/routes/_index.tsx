@@ -1,5 +1,5 @@
 import type {ActionFunctionArgs, MetaFunction} from "@remix-run/node";
-import {Form, json, useActionData} from "@remix-run/react";
+import {Form, useActionData} from "@remix-run/react";
 
 export async function action({request}: ActionFunctionArgs) {
   const formData = await request.formData();
@@ -11,10 +11,7 @@ export async function action({request}: ActionFunctionArgs) {
     method: "POST",
     body,
   });
-  if (response.ok) {
-    return await response.json();
-  }
-  return json({error: await response.text()}, {status: response.status});
+  return await response.json();
 }
 
 export const meta: MetaFunction = () => {
@@ -49,15 +46,14 @@ export default function Index() {
         </Form>
       </div>
       <div>
-        {data?.error && <DangerouslyRenderValue value={data.error} />}
-        {data?.data && <DangerouslyRenderValue value={data.data.username} />}
+        {data?.user && <DangerouslyRenderValue value={data.user.username} />}
       </div>
     </main>
   );
 }
 
 function VStack({children}: {children: React.ReactNode}) {
-  return <div className="flex flex-col">{children}</div>;
+  return <pre className="flex flex-col">{children}</pre>;
 }
 
 // Render ukritisk value som HTML - OBS: Det er en dårlig idé, men gjøres her for å vise et poeng
