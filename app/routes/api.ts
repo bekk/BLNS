@@ -1,23 +1,23 @@
 import {ActionFunctionArgs, json} from "@remix-run/node";
+import crypto from "crypto";
+import {CommentData} from "../domain/Comment";
 
-const users = [{username: "test", password: "test"}];
+const comments: CommentData[] = [];
 
 export async function action({request}: ActionFunctionArgs) {
   const body = (await request.json()) as {
     username: string;
-    password: string;
+    comment: string;
   };
 
-  const {username, password} = body;
+  const {username, comment} = body;
 
-  const userExists = users.find(
-    (user) => user.username === username && user.password === password
-  );
+  comments.unshift({username, comment, id: crypto.randomUUID()});
 
-  if (userExists) {
-    return json({user: {username}}, {status: 200});
-  } else {
-    // Returnerer input så vi kan rendre det i frontend (obs: det er en dårlig idé, men brukes her som eksempel)
-    return json({user: {username}}, {status: 403});
-  }
+  // Returnerer input så vi kan rendre det i frontend (obs: det er en dårlig idé, men brukes her som eksempel)
+  return json(comments);
+}
+
+export async function loader() {
+  return json(comments);
 }
