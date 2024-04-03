@@ -16,6 +16,7 @@
 ### Annet
 
 * Se video om XSS https://youtu.be/PPzn4K2ZjfY?si=fR0T_qAaUYH2cXVK
+* Video som forklarer "korrekt" bruk av alert ved XSS-testing: https://youtu.be/KHwVjzWei1c?si=k6Wn7jFkTkZpWLG8
 
 ## Development
 
