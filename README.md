@@ -5,7 +5,7 @@
 2. Klon repo (https://github.com/bekk/BLNS)
    1. Naviger til repo og kjør `npm install` og `npm run dev`
 3. Se video for hvordan kjøre collections (https://www.youtube.com/watch?v=q7rkPG0f6Gc)
-4. Skriv test i Postman for POST-request mot http://localhost:5173/api som sjekker at alle responser har status 403
+4. Skriv test i Postman for POST-request mot http://localhost:5173/api - Alle requestene vil by default gi 200 OK, men oppgaven deres blir å validere input mot et tenkt scenario (tenk FLRT) og responder med 400 Bad Request dersom dataene ikke validerer mot deres regler.
    1. Se her https://learning.postman.com/docs/writing-scripts/test-scripts/ for hvordan skrive tester i Postman
    2. 5. En del av testene vil feile med 500-feil. Det er din/deres jobb å validere/sanitere input slik at ikke serveren krasjer
 5. Gjør manuell testing mot skjema dere finner her http://localhost:5173
